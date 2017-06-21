@@ -1,3 +1,14 @@
+/* Short write-up on the basic process flow of this app
+
+1) RenderDOM.render() renders Game component
+2) Game component's constructor initializes the state containing history array of 9 squares and variables stepNumber and xIsNext
+3) Game component's render function keeps a history of current moves executed and check if the game has been won through the function calculateWinner
+4) Game component's render function passes both squares prop and onClick prop to the Board component
+5) Board component's render function  returns the board state and passes the value prop and onClick prop (passed from Game) to the Square component
+6) Square is a functional component since it only consists of a render method. It sets up a click event listener and passes the function props.onClick to the parent component when the square is clicked.
+
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
