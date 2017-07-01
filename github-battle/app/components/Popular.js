@@ -1,4 +1,33 @@
 var React = require('react');
+var PropTypes = require('prop-types');
+
+//Stateless functional component (function that is rendering/returning some UI)
+function SelectLanguage (props) {
+
+	var languages = ['All', 'Javascript', 'Ruby', 'Java', 'CSS', 'Python'];
+
+	//.map allows you to take in a second argument to specifcy the context you are in
+	//second argument in this.updateLanguage passes in other arguments to the updateLanguage function
+	return (
+		<ul className='languages'>
+			{languages.map(function (lang) {
+				return (
+					<li 
+						style={lang===props.selectedLanguage ? {color: '#d0021b'} : null}
+						onClick={props.onSelect.bind(null,lang)}
+						key={lang}>
+						{lang}
+					</li>
+				)
+			})}
+		</ul>
+	)
+}
+
+SelectLanguage.propTypes = {
+	selectedLanguage: PropTypes.string.isRequired,
+	onSelect: PropTypes.func.isRequired,
+}
 
 class Popular extends React.Component {
 	//Set up the default state when the Popular component is invoked
@@ -25,23 +54,14 @@ class Popular extends React.Component {
 	//UI for the component
 	render() {
 
-		var languages = ['All', 'Javascript', 'Ruby', 'Java', 'CSS', 'Python'];
-
-		//.map allows you to take in a second argument to specifcy the context you are in
-		//second argument in this.updateLanguage passes in other arguments to the updateLanguage function
 		return (
-			<ul className='languages'>
-				{languages.map(function (lang) {
-					return (
-						<li 
-							style={lang===this.state.selectedLanguage ? {color: '#d0021b'} : null}
-							onClick={this.updateLanguage.bind(null,lang)}
-							key={lang}>
-							{lang}
-						</li>
-					)
-				}, this)}
-			</ul>
+			<div>
+				<SelectLanguage
+					selectedLanguage={this.state.selectedLanguage}
+					onSelect={this.updateLanguage}
+				/>
+			</div>
+
 		)
 	}
 }
