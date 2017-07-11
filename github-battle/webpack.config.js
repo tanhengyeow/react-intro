@@ -6,7 +6,8 @@ module.exports = {
 	entry: './app/index.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'), //resolve to github-battle/dist
-		filename: 'index_bundle.js' // bundle the code into this file and put it inside dir
+		filename: 'index_bundle.js', // bundle the code into this file and put it inside dir
+		publicPath: '/' // base path for all our assets
 	},
 
 	//specify the actual loader/transformation to make to our code
@@ -29,6 +30,11 @@ module.exports = {
 
 		]
 	},	
+
+	devServer: {
+		//redirects to base path and react router will load whatever assets the page is supposed be to showing
+		historyApiFallback: true
+	},
 
 	plugins: [new HtmlWebpackPlugin({
 

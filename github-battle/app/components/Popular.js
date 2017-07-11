@@ -15,6 +15,8 @@ function SelectLanguage (props) {
 				return (
 					<li 
 						style={lang===props.selectedLanguage ? {color: '#d0021b'} : null}
+
+						//this keyword already bound, so first parameter is null
 						onClick={props.onSelect.bind(null,lang)}
 						key={lang}>
 						{lang}
