@@ -16,7 +16,7 @@ function getProfile(username) {
 		});
 }
 
-function getRespos(username) {
+function getRepos(username) {
 	//returns a promise when resolved gives us 100 of user's repo
 	return axios.get('https://api.github.com/users/' + username + '/repos' + params + '&per_page=100')
 }
