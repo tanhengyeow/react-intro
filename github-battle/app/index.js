@@ -5,4 +5,3 @@ require('./index.css'); //all the css in index.css included inside the applicati
 
 var App = require('./components/App');
 ReactDOM.render(<App />, document.getElementById('app'));
-dsadas
