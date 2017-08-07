@@ -2,7 +2,7 @@
 
 # dependencies
 node_modules
-
+firefox_root
 # testing
 ##/coverage
 
